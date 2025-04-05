@@ -16,6 +16,10 @@
     }
     canvas {
       display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
     }
     .overlay {
       position: absolute;
@@ -23,6 +27,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
+      z-index: 1;
     }
     h1 {
       font-size: 3em;
@@ -31,13 +36,32 @@
     p {
       font-size: 1.2em;
     }
+    .color-boxes {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      z-index: 2;
+    }
+    .box {
+      width: 100px;
+      height: 50px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8em;
+      font-weight: bold;
+      color: black;
+      box-shadow: 0 0 15px rgba(255,255,255,0.3);
+    }
   </style>
 </head>
 <body>
   <canvas id="matrix"></canvas>
-  <div class="overlay">
-  
-  </div>
 
   <script>
     const canvas = document.getElementById('matrix');
@@ -46,7 +70,7 @@
     canvas.height = window.innerHeight;
     canvas.width = window.innerWidth;
 
-    const matrix = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const matrix = "01"; // Only 0s and 1s now
     const fontSize = 16;
     const columns = canvas.width / fontSize;
     const drops = Array.from({length: columns}, () => 1);
